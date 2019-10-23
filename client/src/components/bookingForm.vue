@@ -3,9 +3,9 @@
     New Guest:
   <form v-on:submit="handleSubmit" class="form" action="index.html" method="post">
     <label for="name"> Name: </label>
-    <input v-model='name'type="text" id="name" value="">
+    <input v-model='name'type="text" id="name" required>
     <label for="email">Email: </label>
-    <input v-model='email' type="text" id="email" value="">
+    <input v-model='email' type="text" id="email" required>
     <label for="checkedIn">Checked In</label>
     <input v-model='checkedIn' type="checkbox" id="checkedIn" value="">
     <input class="submit-button" type="submit" name="" value="Add Booking">
@@ -52,7 +52,7 @@ div {
   width: 60%;
 }
 .submit-button {
-  
+
   background-color: #FADCF5;
   border-radius: 10px;
 }

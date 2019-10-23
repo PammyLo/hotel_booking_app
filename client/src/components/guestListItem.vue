@@ -1,9 +1,10 @@
 <template lang="html">
   <div class="guest-list">
     <li v-for='(guest, index) in guests' :key='index'>
-      <h3>{{guest.name}}</h3>
-      <p class='email'>{{guest.email}}</p>
-      <input v-model="guest.checkedIn" type="checkbox" name="" value="">
+      <h3>{{ guest.name }}</h3>
+      <p class='email'>{{ guest.email }}</p>
+      <input v-on:change="handleChange(guests[index]._id)"
+      type="checkbox" v-model="guest.checkedIn" ></input>
       <button v-on:click='handleDelete(guests[index]._id)' type="button">Delete</button>
     </li>
   </div>
@@ -16,15 +17,23 @@ import {eventBus} from "@/main.js"
 export default {
   name: 'list-item',
   props: ['guests'],
+  data() {
+    return {
+      checkedIn: booleanValue
+    }
+  },
   methods: {
     handleDelete(id) {
       BookingService.deleteBooking(id)
         .then(() => eventBus.$emit('booking-deleted', id))
+    },
+    handleChange(id) {
+      const changes = {
+        checkedIn: this.checkedIn
+      }
+      BookingService.changeBooking(id, changes)
+        .then(() => eventBus.$emit('booking-changed', id, changes))
     }
-    // handleChange(id) {
-    //   BookingService.changeBooking(id)
-    //     .then(() => eventBus.$emit('booking-changed', id))
-    // }
   }
 }
 </script>

@@ -16,6 +16,15 @@ export default {
     .then(res => res.json())
   },
 
+  changeBooking(id, changes) {
+    return fetch(baseURL + id, changes, {
+      method: 'PUT',
+      body: JSON.stringify(changes),
+      headers: { 'Content-Type': 'application/json'}
+    })
+    .then(res => res.json())
+  },
+
   deleteBooking(id) {
     return fetch(baseURL + id, {
       method: 'DELETE'
