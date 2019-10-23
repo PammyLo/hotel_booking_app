@@ -3,16 +3,29 @@
     <li v-for='(guest, index) in guests' :key='index'>
       <h3>{{guest.name}}</h3>
       <p class='email'>{{guest.email}}</p>
-      <input type="checkbox" name="" value="">
+      <input v-model="guest.checkedIn" type="checkbox" name="" value="">
+      <button v-on:click='handleDelete(guests[index]._id)' type="button">Delete</button>
     </li>
   </div>
 
 </template>
 
 <script>
+import BookingService from '@/services/bookingService.js'
+import {eventBus} from "@/main.js"
 export default {
   name: 'list-item',
-  props: ['guests']
+  props: ['guests'],
+  methods: {
+    handleDelete(id) {
+      BookingService.deleteBooking(id)
+        .then(() => eventBus.$emit('booking-deleted', id))
+    }
+    // handleChange(id) {
+    //   BookingService.changeBooking(id)
+    //     .then(() => eventBus.$emit('booking-changed', id))
+    // }
+  }
 }
 </script>
 

@@ -22,6 +22,10 @@ export default {
       .then(bookings => this.guests = bookings);
     eventBus.$on('add-booking', (newBooking) => {
       this.guests.push(newBooking)
+    });
+    eventBus.$on('booking-deleted', (id) => {
+      const index = this.guests.findIndex(guest => guest._id === id);
+      this.guests.splice(index, 1)
     })
   },
   components: {
