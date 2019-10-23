@@ -1,9 +1,9 @@
 <template lang="html">
-  <div class="">
+  <div class="guest-list">
     <li v-for='(guest, index) in guests' :key='index'>
-      <h2>{{guest.name}}</h2>
-      <p>{{guest.email}}</p>
-      <p v-if="guest.checkedIn">Checked in</p>
+      <h3>{{guest.name}}</h3>
+      <p class='email'>{{guest.email}}</p>
+      <input type="checkbox" name="" value="">
     </li>
   </div>
 
@@ -17,4 +17,38 @@ export default {
 </script>
 
 <style lang="css" scoped>
+  li {
+    display: flex;
+    justify-content: space-between;
+    width: 60%
+  }
+
+  p.email {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  button {
+    height: 17px;
+    width: 17px;
+    border: none;
+  }
+
+  button.checkedin {
+    background-image: url('../assets/check-square-solid.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  button.notcheckedin {
+    background-image: url('../assets/square-regular.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .guest-list {
+    border-width: 2px;
+  }
+
 </style>

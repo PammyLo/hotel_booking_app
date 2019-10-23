@@ -1,11 +1,15 @@
 <template lang="html">
-  <guest-list :guests='guests' ></guest-list>
+  <div class="">
+    <booking-form></booking-form>
+    <guest-list :guests='guests' ></guest-list>
+  </div>
 </template>
 
 <script>
 import BookingService from '@/services/bookingService.js'
 import guestList from "@/components/guestList.vue"
-
+import bookingForm from "@/components/bookingForm.vue"
+import {eventBus} from './main.js'
 export default {
   name: 'app',
   data() {
@@ -16,9 +20,13 @@ export default {
   mounted() {
     BookingService.getBookings()
       .then(bookings => this.guests = bookings);
+    eventBus.$on('add-booking', (newBooking) => {
+      this.guests.push(newBooking)
+    })
   },
   components: {
-    "guest-list": guestList
+    "guest-list": guestList,
+    'booking-form': bookingForm
   }
 }
 </script>
