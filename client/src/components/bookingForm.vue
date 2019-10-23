@@ -1,13 +1,16 @@
 <template lang="html">
-  <form v-on:submit="handleSubmit" class="" action="index.html" method="post">
-    <label for="name">Name: </label>
+  <div>
+    New Guest:
+  <form v-on:submit="handleSubmit" class="form" action="index.html" method="post">
+    <label for="name"> Name: </label>
     <input v-model='name'type="text" id="name" value="">
     <label for="email">Email: </label>
     <input v-model='email' type="text" id="email" value="">
     <label for="checkedIn">Checked In</label>
     <input v-model='checkedIn' type="checkbox" id="checkedIn" value="">
-    <input type="submit" name="" value="Add Booking">
+    <input class="submit-button" type="submit" name="" value="Add Booking">
   </form>
+</div>
 </template>
 
 <script>
@@ -39,4 +42,19 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+div {
+
+  display: flex;
+  justify-content: center;
+  letter-spacing: 0px;
+  justify-content: space-between;
+  width: 60%;
+}
+.submit-button {
+  
+  background-color: #FADCF5;
+  border-radius: 10px;
+}
+
 </style>

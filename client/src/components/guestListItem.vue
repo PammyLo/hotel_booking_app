@@ -36,6 +36,10 @@ export default {
     width: 60%
   }
 
+  h3 {
+    width: 100px;
+  }
+
   p.email {
     display: flex;
     flex-direction: column;
@@ -46,6 +50,7 @@ export default {
     height: 17px;
     width: 17px;
     border: none;
+    background-color: #efefefef;
   }
 
   button.checkedin {

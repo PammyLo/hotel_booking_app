@@ -1,6 +1,7 @@
 <template lang="html">
 
   <section>
+    <h1>Guest List</h1>
     <ul>
       <guest-list-item :guests='guests' ></guest-list-item>
     </ul>
@@ -21,4 +22,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
+h1 {
+  display: flex;
+  margin: 40px;
+  color: #81547E;
+}
 </style>

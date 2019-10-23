@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="app">
     <booking-form></booking-form>
     <guest-list :guests='guests' ></guest-list>
   </div>
@@ -36,4 +36,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+.app {background-color: #efefefef}
+
 </style>
