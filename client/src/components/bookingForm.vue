@@ -7,7 +7,7 @@
     <label for="email">Email: </label>
     <input v-model='email' type="text" id="email" required>
     <label for="checkedIn">Checked In</label>
-    <input v-model='checkedIn' type="checkbox" id="checkedIn" value="">
+    <input v-model='checkedIn' type="checkbox">
     <input class="submit-button" type="submit" name="" value="Add Booking">
   </form>
 </div>

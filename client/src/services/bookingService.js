@@ -17,7 +17,7 @@ export default {
   },
 
   changeBooking(id, changes) {
-    return fetch(baseURL + id, changes, {
+    return fetch(baseURL + id, {
       method: 'PUT',
       body: JSON.stringify(changes),
       headers: { 'Content-Type': 'application/json'}
