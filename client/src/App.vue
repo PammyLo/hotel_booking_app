@@ -3,12 +3,18 @@
 </template>
 
 <script>
+import BookingService from '@/services/bookingService.js'
+
 export default {
   name: 'app',
   data() {
     return {
       guests: []
     }
+  },
+  mounted() {
+    BookingService.getBookings()
+      .then(bookings => this.guests = bookings);
   }
 }
 </script>
