@@ -1,9 +1,10 @@
 <template lang="html">
-  <h1>hello world</h1>
+  <guest-list :guests='guests' ></guest-list>
 </template>
 
 <script>
 import BookingService from '@/services/bookingService.js'
+import guestList from "@/components/guestList.vue"
 
 export default {
   name: 'app',
@@ -15,6 +16,9 @@ export default {
   mounted() {
     BookingService.getBookings()
       .then(bookings => this.guests = bookings);
+  },
+  components: {
+    "guest-list": guestList
   }
 }
 </script>
