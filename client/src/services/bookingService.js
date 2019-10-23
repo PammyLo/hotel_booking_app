@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:3000/api/bookings"
+const baseURL = "http://localhost:3000/api/bookings/"
 
 export default {
 
@@ -9,11 +9,11 @@ export default {
 
   addBooking(payload) {
     return fetch(baseURL, {
-      method: POST,
+      method: 'POST',
       body: JSON.stringify(payload),
       headers: { 'Content-Type': 'application/json'}
     })
     .then(res => res.json())
-
   }
+
 }

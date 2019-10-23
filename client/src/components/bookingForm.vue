@@ -1,5 +1,5 @@
 <template lang="html">
-  <form @:submit="handleSubmit" class="" action="index.html" method="post">
+  <form v-on:submit="handleSubmit" class="" action="index.html" method="post">
     <label for="name">Name: </label>
     <input v-model='name'type="text" id="name" value="">
     <label for="email">Email: </label>
