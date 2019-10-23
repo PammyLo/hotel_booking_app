@@ -3,8 +3,8 @@
     <li v-for='(guest, index) in guests' :key='index'>
       <h3>{{ guest.name }}</h3>
       <p class='email'>{{ guest.email }}</p>
-      <input v-on:change="handleChange(guests[index]._id)"
-      type="checkbox" v-model="guest.checkedIn" ></input>
+      <input v-on:change="handleChange"
+      type="checkbox" v-model="guest.checkedIn" >
       <button v-on:click='handleDelete(guests[index]._id)' type="button">Delete</button>
     </li>
   </div>
@@ -19,7 +19,7 @@ export default {
   props: ['guests'],
   data() {
     return {
-      checkedIn: booleanValue
+      checkedIn: false
     }
   },
   methods: {
@@ -31,7 +31,7 @@ export default {
       const changes = {
         checkedIn: this.checkedIn
       }
-      BookingService.changeBooking(id, changes)
+      BookingService.changeBooking( this.guests._id, changes)
         .then(() => eventBus.$emit('booking-changed', id, changes))
     }
   }
@@ -46,13 +46,11 @@ export default {
   }
 
   h3 {
-    width: 100px;
+    width: 30%;
   }
 
-  p.email {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .email {
+    text-align: left;
   }
 
   button {
@@ -60,18 +58,7 @@ export default {
     width: 17px;
     border: none;
     background-color: #efefefef;
-  }
-
-  button.checkedin {
-    background-image: url('../assets/check-square-solid.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  button.notcheckedin {
-    background-image: url('../assets/square-regular.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
+    vertical-align: bottom;
   }
 
   .guest-list {
